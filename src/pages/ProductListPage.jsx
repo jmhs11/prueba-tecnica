@@ -8,8 +8,10 @@ function ProductListPage() {
 
 	return (
 		<div>
-			<Search />
-			<div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+			<div className="flex justify-end">
+				<Search />
+			</div>
+			<div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4">
 				{products?.map((product) => (
 					<Item key={product.id} product={product} />
 				))}
