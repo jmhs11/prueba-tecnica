@@ -1,39 +1,41 @@
-import { RouterProvider } from "react-router-dom";
-import { createBrowserRouter } from "react-router-dom";
-import Header from "./components/Header";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./components/Layout";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProductListPage from "./pages/ProductListPage";
 
 function App() {
 	const productListLoader = async () => {
-		return fetch("/fake/api/products.json");
+		return fetch(`${import.meta.env.VITE_BASEURL}/product`).then((res) => res.json());
 	};
 
 	const productDetailsLoader = async ({ params }) => {
-		return fetch("/fake/api/products.json");
+		return fetch(`${import.meta.env.VITE_BASEURL}/product/${params.id}`).then((res) => res.json());
 	};
 
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <ProductListPage />,
-			loader: productListLoader,
-		},
-		{
-			path: "product/:id",
-			element: <ProductDetailsPage />,
-			loader: productDetailsLoader,
+			element: <Layout />,
+			children: [
+				{
+					path: "/",
+					element: <ProductListPage />,
+					loader: productListLoader,
+				},
+				{
+					path: "product/:id",
+					element: <ProductDetailsPage />,
+					loader: productDetailsLoader,
+				},
+				{
+					path: "*",
+					element: <div>Not Found</div>,
+				},
+			],
 		},
 	]);
 
-	return (
-		<>
-			<Header />
-			<main className="px-2 py-4 md:p-4">
-				<RouterProvider router={router} />
-			</main>
-		</>
-	);
+	return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
