@@ -4,7 +4,11 @@ function Item({ product }) {
 	return (
 		<Link to={`/product/${product.id}`}>
 			<div className="bg-white rounded-lg shadow-lg overflow-hidden p-4">
-				<img className="h-48 w-full object-contain" src={product.imgUrl} alt={`${product.brand} ${product.model}`} />
+				<img
+					className="h-48 w-full object-contain aspect-square"
+					src={product.imgUrl}
+					alt={`${product.brand} ${product.model}`}
+				/>
 				<div className="pt-4">
 					<h3 className="font-semibold text-lg">
 						{product.brand} {product.model}
