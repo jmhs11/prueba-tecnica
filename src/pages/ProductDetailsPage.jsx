@@ -1,8 +1,21 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import Description from "../components/Description";
+import Image from "../components/Image";
 
 function ProductDetailsPage() {
-	const params = useParams();
+	const product = useLoaderData();
 
-	return <div>{JSON.stringify(params, null, 2)}</div>;
+	console.log(product);
+
+	return (
+		<div className="grid md:grid-cols-2 mt-20 gap-8">
+			<Image
+				className="w-full lg:w-2/3 lg:place-self-center object-contain"
+				src={product.imgUrl}
+				alt={`${product.brand} ${product.model}`}
+			/>
+			<Description product={product} />
+		</div>
+	);
 }
 export default ProductDetailsPage;
