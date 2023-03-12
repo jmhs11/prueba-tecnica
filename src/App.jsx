@@ -4,10 +4,6 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProductListPage from "./pages/ProductListPage";
 
 function App() {
-	const productListLoader = async () => {
-		return fetch(`${import.meta.env.VITE_BASEURL}/product`).then((res) => res.json());
-	};
-
 	const productDetailsLoader = async ({ params }) => {
 		return fetch(`${import.meta.env.VITE_BASEURL}/product/${params.id}`).then((res) => res.json());
 	};
@@ -20,7 +16,6 @@ function App() {
 				{
 					path: "/",
 					element: <ProductListPage />,
-					loader: productListLoader,
 				},
 				{
 					path: "product/:id",
