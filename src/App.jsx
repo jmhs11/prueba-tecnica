@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
+import CartProvider from "./lib/context/CartContext";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProductListPage from "./pages/ProductListPage";
 
@@ -30,7 +31,11 @@ function App() {
 		},
 	]);
 
-	return <RouterProvider router={router}></RouterProvider>;
+	return (
+		<CartProvider>
+			<RouterProvider router={router}></RouterProvider>
+		</CartProvider>
+	);
 }
 
 export default App;

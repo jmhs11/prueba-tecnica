@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Actions from "../components/Actions";
 import Description from "../components/Description";
 import Image from "../components/Image";
 
@@ -14,7 +15,10 @@ function ProductDetailsPage() {
 				src={product.imgUrl}
 				alt={`${product.brand} ${product.model}`}
 			/>
-			<Description product={product} />
+			<div>
+				<Description product={product} />
+				<Actions product={product} />
+			</div>
 		</div>
 	);
 }
