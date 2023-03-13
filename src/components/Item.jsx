@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Item({ product }) {
 	return (
-		<Link to={`/product/${product.id}`}>
-			<div className="bg-white rounded-lg shadow-lg overflow-hidden p-4">
+		<Link to={`/product/${product.id}`} className="flex">
+			<div className="bg-white rounded-lg shadow-lg overflow-hidden p-4 grow">
 				<img
 					className="h-48 w-full object-contain aspect-square"
 					src={product.imgUrl}

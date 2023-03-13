@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import CartProvider from "./lib/context/CartContext";
@@ -13,15 +14,25 @@ function App() {
 		{
 			path: "/",
 			element: <Layout />,
+			handle: {
+				crumb: () => <Link to="/">Products</Link>,
+			},
 			children: [
 				{
-					path: "/",
+					index: true,
 					element: <ProductListPage />,
 				},
 				{
 					path: "product/:id",
 					element: <ProductDetailsPage />,
 					loader: productDetailsLoader,
+					handle: {
+						crumb: (data) => (
+							<span>
+								{data.brand} {data.model}
+							</span>
+						),
+					},
 				},
 				{
 					path: "*",

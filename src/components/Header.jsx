@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCartContext } from "../lib/context/CartContext";
+import Breadcrumbs from "./Breadcrumbs";
 
 function Header() {
 	const { cartCount } = useCartContext();
@@ -10,6 +11,7 @@ function Header() {
 				<Link to="/" className="text-white text-3xl">
 					Store
 				</Link>
+				<Breadcrumbs />
 				<div className="relative">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
