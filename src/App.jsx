@@ -1,34 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Link } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./components/Layout";
+import CartProvider from "./lib/context/CartContext";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ProductListPage from "./pages/ProductListPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+	const productDetailsLoader = async ({ params }) => {
+		return fetch(`${import.meta.env.VITE_BASEURL}/product/${params.id}`).then((res) => res.json());
+	};
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+	const router = createBrowserRouter([
+		{
+			path: "/",
+			element: <Layout />,
+			handle: {
+				crumb: () => <Link to="/">Products</Link>,
+			},
+			children: [
+				{
+					index: true,
+					element: <ProductListPage />,
+				},
+				{
+					path: "product/:id",
+					element: <ProductDetailsPage />,
+					loader: productDetailsLoader,
+					handle: {
+						crumb: (data) => (
+							<span>
+								{data.brand} {data.model}
+							</span>
+						),
+					},
+				},
+				{
+					path: "*",
+					element: <div>Not Found</div>,
+				},
+			],
+		},
+	]);
+
+	return (
+		<CartProvider>
+			<RouterProvider router={router}></RouterProvider>
+		</CartProvider>
+	);
 }
 
-export default App
+export default App;
