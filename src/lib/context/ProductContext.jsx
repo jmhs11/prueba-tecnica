@@ -1,21 +1,25 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const ProductContext = createContext();
 
 function ProductProvider({ children }) {
 	const [products, setProducts] = useState();
-
-	let initialProducts = [];
+	const [initialProducts, setInitialProducts] = useState();
 
 	useEffect(() => {
 		const getProducts = async () => {
-			const data = await fetch(`${import.meta.env.VITE_BASEURL}/product`);
-			const dataJSON = await data.json();
+			if (!localStorage.getItem("products")) {
+				const request = await fetch(`${import.meta.env.VITE_BASEURL}/product`);
+				const data = await request.json();
 
-			initialProducts = dataJSON;
-			console.log(dataJSON);
-			setProducts(dataJSON);
+				localStorage.setItem("products", JSON.stringify(data));
+			}
+
+			const products = JSON.parse(localStorage.getItem("products"));
+			setInitialProducts(products);
+			setProducts(products);
 		};
+
 		getProducts();
 	}, []);
 

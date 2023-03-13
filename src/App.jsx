@@ -1,13 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
+import CartProvider from "./lib/context/CartContext";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProductListPage from "./pages/ProductListPage";
 
 function App() {
-	const productListLoader = async () => {
-		return fetch(`${import.meta.env.VITE_BASEURL}/product`).then((res) => res.json());
-	};
-
 	const productDetailsLoader = async ({ params }) => {
 		return fetch(`${import.meta.env.VITE_BASEURL}/product/${params.id}`).then((res) => res.json());
 	};
@@ -20,7 +17,6 @@ function App() {
 				{
 					path: "/",
 					element: <ProductListPage />,
-					loader: productListLoader,
 				},
 				{
 					path: "product/:id",
@@ -35,7 +31,11 @@ function App() {
 		},
 	]);
 
-	return <RouterProvider router={router}></RouterProvider>;
+	return (
+		<CartProvider>
+			<RouterProvider router={router}></RouterProvider>
+		</CartProvider>
+	);
 }
 
 export default App;
