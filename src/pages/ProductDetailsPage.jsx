@@ -6,8 +6,6 @@ import Image from "../components/Image";
 function ProductDetailsPage() {
 	const product = useLoaderData();
 
-	console.log(product);
-
 	return (
 		<div className="grid md:grid-cols-2 mt-20 gap-8">
 			<Image

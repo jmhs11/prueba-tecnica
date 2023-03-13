@@ -13,9 +13,9 @@ function ProductProvider({ children }) {
 			const dataJSON = await data.json();
 
 			initialProducts = dataJSON;
-			console.log(dataJSON);
 			setProducts(dataJSON);
 		};
+
 		getProducts();
 	}, []);
 

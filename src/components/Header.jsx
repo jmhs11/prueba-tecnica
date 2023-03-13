@@ -4,8 +4,6 @@ import { useCartContext } from "../lib/context/CartContext";
 function Header() {
 	const { cartCount } = useCartContext();
 
-	console.log(cartCount);
-
 	return (
 		<header className="bg-red-500">
 			<div className="container mx-auto h-20 flex items-center justify-between">
