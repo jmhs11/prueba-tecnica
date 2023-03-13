@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import Item from "../components/Item";
 import Search from "../components/Search";
 import { useProductContext } from "../lib/context/ProductContext";
 
 function ProductListPage() {
 	const { initialProducts, products: searchResults, setProducts: setSearchResults } = useProductContext();
+
+	console.log({ initialProducts, searchResults });
 
 	let searchTimeout;
 
