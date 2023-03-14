@@ -26,7 +26,7 @@ function ProductListPage () {
       <div className='flex justify-end'>
         <Search onChange={searchProducts} />
       </div>
-      <div className='grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4'>
+      <div className='grid gap-8 grid-cols-products mt-4'>
         {searchResults?.map((product) => (
           <Item key={product.id} product={product} />
         ))}

@@ -6,7 +6,7 @@ function Header () {
   const { cartCount } = useCartContext()
 
   return (
-    <header className='bg-red-500'>
+    <header className='bg-red-500 px-4'>
       <div className='container mx-auto h-20 flex items-center justify-between'>
         <Link to='/' className='text-white text-3xl'>
           Store
