@@ -1,4 +1,4 @@
-function Image({ ...props }) {
-	return <img {...props} />;
+function Image ({ ...props }) {
+  return <img {...props} />
 }
-export default Image;
+export default Image
