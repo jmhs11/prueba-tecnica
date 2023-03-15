@@ -1,6 +1,6 @@
 import { Link, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import CartProvider from './lib/context/CartContext'
+import CartProvider from './context/CartContext'
 import ProductDetailsPage from './pages/ProductDetailsPage'
 import ProductListPage from './pages/ProductListPage'
 

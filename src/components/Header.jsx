@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useCartContext } from '../lib/context/CartContext'
+import { useCartContext } from '../context/CartContext'
 import Breadcrumbs from './Breadcrumbs'
 
 function Header () {

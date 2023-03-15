@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import ProductProvider from '../lib/context/ProductContext'
+import ProductProvider from '../context/ProductContext'
 import Header from './Header'
 
 function Layout () {

@@ -1,4 +1,4 @@
-import { useCartContext } from '../lib/context/CartContext'
+import { useCartContext } from '../context/CartContext'
 
 function Actions ({ product }) {
   const { setCartCount } = useCartContext()
