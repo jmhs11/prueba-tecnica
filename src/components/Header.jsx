@@ -6,9 +6,9 @@ function Header () {
   const { cartCount } = useCartContext()
 
   return (
-    <header className='bg-red-500 px-4'>
+    <header className='bg-[#C6E2E9] text-[#3C3C3C] px-4'>
       <div className='container mx-auto h-20 flex items-center justify-between'>
-        <Link to='/' className='text-white text-3xl'>
+        <Link to='/' className='text-3xl'>
           Store
         </Link>
         <Breadcrumbs />
