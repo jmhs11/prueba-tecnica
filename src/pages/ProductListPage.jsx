@@ -5,8 +5,6 @@ import { useProductContext } from '../context/ProductContext'
 function ProductListPage () {
   const { initialProducts, products: searchResults, setProducts: setSearchResults } = useProductContext()
 
-  console.log({ initialProducts, searchResults })
-
   let searchTimeout
 
   const searchProducts = (ev) => {
